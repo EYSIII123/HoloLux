@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HoloLux - Final Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0e0e14;
+      color: #ffffff;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0e0e14;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      color: #00ffff;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+    }
+
+    .nav-links a:last-child {
+      padding: 8px 20px;
+      background: linear-gradient(90deg, #00ffff, #8a2be2);
+      border-radius: 20px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 120px 60px;
+      min-height: 100vh;
+    }
+
+    .hero,
+    .model-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0e0e14 60%, #1a1a2f 100%);
+      flex-direction: row;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero-buttons .btn {
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #00ffff, #8a2be2);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #00ffff;
+      border: 2px solid #00ffff;
+    }
+
+    .btn-primary:hover, .btn-secondary:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel {
+      max-width: 45%;
+      animation: float 4s ease-in-out infinite;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      filter: drop-shadow(0 0 20px #00ffff);
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .model-section {
+      background-color: #14141f;
+      flex-direction: row;
+      gap: 60px;
+    }
+
+    .model-image {
+      width: 50%;
+    }
+
+    .model-image img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px #00ffff);
+    }
+
+    .model-info {
+      width: 50%;
+    }
+
+    .model-info h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .model-info p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .model-info ul {
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    .price-tag {
+      font-size: 1.5rem;
+      color: #8a2be2;
+      font-weight: bold;
+    }
+
+    .about-section, .tech-section, .contact-section, .preorder-section {
+      flex-direction: column;
+      text-align: center;
+      background-color: #1a1a2f;
+    }
+
+    .about-section h2, .tech-section h2, .contact-section h2, .preorder-section h2 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .about-section p, .tech-section p, .contact-section p, .preorder-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .model-section.reverse {
+  flex-direction: row-reverse;
+    }
+.model-section.reverse {
+  flex-direction: row-reverse;
+  .tech-section {
+  background: linear-gradient(135deg, #0e0e14, #1a1a2f);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <svg width="160" height="50" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="holoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00ffff; stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#8a2be2; stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <!-- Logo Icon -->
+      <g transform="translate(0, 10)">
+        <circle cx="25" cy="25" r="20" fill="none" stroke="url(#holoGradient)" stroke-width="3" />
+        <path d="M15 25 L25 10 L35 25 L25 40 Z" fill="url(#holoGradient)" />
+      </g>
+      <!-- Brand Name -->
+      <text x="60" y="55" font-family="Orbitron, sans-serif" font-size="40" fill="url(#holoGradient)">HoloLux</text>
+    </svg>
+  </div>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#models">Watch Models</a>
+    <a href="#tech">Technology</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#preorder">Pre-Order</a>
+  </div>
+</nav>
+
+   <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>Time, Reimagined. Projected in Light.</h1>
+      <p>Introducing <strong>HoloLux</strong> – the first holographic smartwatch that bends time, light, and reality. See the future, wear the light, and stay connected beyond limits.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Explore Watch</button>
+        <button class="btn btn-secondary">Watch Demo</button>
+      </div>
+    </div>
+    <div class="carousel">
+      <img src="hero-text.jpg" alt="HoloLux Hero 1" class="active">
+      <img src="astrahalo.jpg" alt="AstraHalo">
+      <img src="quantumedge.jpg" alt="QuantumEdge">
+      <img src="chronospecter.jpg" alt="ChronoSpecter">
+    </div>
+  </section>
+
+  <!-- WATCH MODELS -->
+  <div id="models"></div>
+
+  <section class="model-section">
+    <div class="model-image">
+      <img src="astrahalo.jpg" alt="AstraHalo">
+    </div>
+    <div class="model-info">
+  <h2>AstraHalo</h2>
+  }
+</style>
+      <p>Minimalist elegance with daily utility. Featuring holographic time, health tracking, and gesture navigation in an ultra-light build.</p>
+      <ul>
+        <li> Holographic Time Projection</li>
+        <li> Health & Sleep Monitoring</li>
+        <li>️ Gesture-Based Control</li>
+        <li> Ultra-light Titanium Frame</li>
+      </ul>
+      <div class="price-tag">$4,999</div>
+    </div>
+  </section>
+
+<section class="model-section reverse">
+  <div class="model-image">
+    <img src="quantumedge.jpg" alt="QuantumEdge">
+  </div>
+  <div class="model-info">
+    <h2>QuantumEdge</h2>
+    <p>Built for developers and power users. Customize your holographic UI, deploy apps, and link with smart environments seamlessly.</p>
+    <ul>
+      <li> Customizable Holographic Interface</li>
+      <li> Developer Mode & SDK Integration</li>
+      <li> Smart Environment Linking</li>
+      <li> Long-lasting Adaptive Battery</li>
+    </ul>
+    <div class="price-tag">$5,999</div>
+  </div>
+</section>
+
+  <section class="model-section">
+    <div class="model-image">
+      <img src="chronospecter.jpg" alt="ChronoSpecter">
+    </div>
+    <div class="model-info">
+      <h2>ChronoSpecter</h2>
+      <p>The pinnacle of holographic luxury. Emotion-aware display, AI assistance, and reflective prism finish for high-end experiences.</p>
+      <ul>
+        <li> Emotion-Aware AI Display</li>
+        <li> Reflective Prism Body</li>
+        <li>️ Voice & Mood Interaction</li>
+        <li>️ Sapphire Glass & DLC Coating</li>
+      </ul>
+      <div class="price-tag">$6,999</div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY SECTION -->
+<section class="tech-section" id="tech" style="background: radial-gradient(circle at center, #1f1f2e 0%, #0e0e14 100%); padding: 100px 20px; text-align: center;">
+  <h2 style="font-size: 3rem; color: #00ffff; text-shadow: 0 0 12px #00ffff; margin-bottom: 40px;">
+    <span style="color: #8a2be2;">Technology</span> Behind HoloLux
+  </h2>
+
+  <p style="font-size: 1.2rem; color: #cccccc; line-height: 1.8; max-width: 850px; margin: 0 auto 30px; text-shadow: 0 0 8px #8a2be2;">
+    <strong style="color: #00ffff;">HoloLux</strong> stands at the intersection of quantum mechanics and wearable technology. At its core, a <strong style="color: #8a2be2;">Quantum Holographic Engine</strong> beams light through nano-reflectors to form 3D time projections that float mid-air, crisp and untethered.
+  </p>
+
+  <p style="font-size: 1.2rem; color: #cccccc; line-height: 1.8; max-width: 850px; margin: 0 auto 30px; text-shadow: 0 0 8px #00ffff;">
+    The device features a full suite of motion-aware sensors and AI-assisted routines. <span style="color: #8a2be2;">Neural Gesture Recognition</span> replaces physical buttons, enabling commands with the flick of a finger.
+  </p>
+
+  <p style="font-size: 1.2rem; color: #cccccc; line-height: 1.8; max-width: 850px; margin: 0 auto 30px; text-shadow: 0 0 8px #8a2be2;">
+    Its <strong style="color: #00ffff;">Environmental Sync Protocol (ESP)</strong> auto-adjusts smart lights, speakers, and doors in response to your movement and mood. HoloLux doesn’t follow the future—it defines it.
+  </p>
+
+  <p style="font-size: 1.3rem; color: #ffffff; font-weight: bold; line-height: 1.8; max-width: 850px; margin: 0 auto; text-shadow: 0 0 12px #8a2be2;">
+    <em>Experience intelligence that lives in light.</em>
+    
+       <div style="margin-top: 30px;">
+      <img src="tech-image.jpg" alt="HoloLux Technology Visualization" style="max-width: 100%; height: auto; filter: drop-shadow(0 0 15px #00ffff);">
+    </div>
+</section>
+
+  <!-- ABOUT SECTION -->
+ <section class="about-section" id="about" style="background-color: #12121c; padding: 80px 20px; text-align: center;">
+  <h2 style="font-size: 3rem; color: #00ffff; margin-bottom: 30px; text-shadow: 0 0 15px #00ffff;">About Us</h2>
+  <div style="max-width: 1000px; margin: 0 auto; padding: 30px; background: #0e0e14; border-radius: 15px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.2), 0 0 40px rgba(138, 43, 226, 0.15);">
+    <p style="font-size: 1.2rem; color: #ccc; line-height: 1.8; margin-bottom: 20px; text-shadow: 0 0 5px #8a2be2;">
+      At <strong style="color: #8a2be2; text-shadow: 0 0 5px #8a2be2;">HoloLux</strong>, we don’t just craft smartwatches — we redefine the essence of time itself. Founded by a coalition of dreamers, visionaries, and engineers, our mission began with a single question: <em style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">"What if time could break free from the screen?"</em>
+    </p>
+    <p style="font-size: 1.2rem; color: #ccc; line-height: 1.8; margin-bottom: 20px; text-shadow: 0 0 5px #8a2be2;">
+      That radical thought led us to innovate the world’s first <strong style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">holographic smartwatch</strong>. After countless prototypes, rigorous testing, and technological breakthroughs, HoloLux emerged — not just as a product, but as a revolution in wearable technology.
+    </p>
+    <p style="font-size: 1.2rem; color: #ccc; line-height: 1.8; text-shadow: 0 0 5px #8a2be2;">
+      Behind every beam of light we project lies our core belief: <strong style="color: #8a2be2; text-shadow: 0 0 5px #8a2be2;">technology should feel like magic</strong> — intuitive, personal, and elegant. More than innovation, HoloLux is our legacy. A legacy of light, of possibility, and of the future.
+    </p>
+    <p style="font-size: 1.2rem; color: #ccc; line-height: 1.8; margin-top: 20px; text-shadow: 0 0 5px #00ffff;">
+      <strong style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">The future is luminous. The future is HoloLux.</strong>
+    </p>
+  </div>
+</section>
+
+  <!-- CONTACT SECTION -->
+<section class="contact-section" id="contact" style="background-color: #12121c; padding: 80px 20px; text-align: center;">
+  <h2 style="font-size: 2.8rem; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 30px;">Contact Us</h2>
+
+  <p style="font-size: 1.2rem; color: #ccc; line-height: 1.8; max-width: 800px; margin: 0 auto 40px auto;">
+    Have questions or need support? Our team is here to help. Whether it's product inquiries, business partnerships, or press opportunities, don't hesitate to reach out.
+  </p>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 60px;">
+    <div style="text-align: left; color: #ccc;">
+      <h3 style="color: #8a2be2; margin-bottom: 10px; text-shadow: 0 0 8px #8a2be2;">Corporate Office</h3>
+      <p>NeoCity District<br>TechBlock 42, Sector 7<br>Futuris, Earth 3012</p>
+    </div>
+
+    <div style="text-align: left; color: #ccc;">
+      <h3 style="color: #8a2be2; margin-bottom: 10px; text-shadow: 0 0 8px #8a2be2;">Customer Support</h3>
+      <p>Email: <a href="mailto:support@hololux.tech" style="color: #00ffff; text-decoration: none;">support@hololux.tech</a></p>
+      <p>Phone: +1 (800) 456-7890</p>
+      <p>Hours: Mon–Fri, 9AM–6PM (UTC)</p>
+    </div>
+
+    <div style="text-align: left; color: #ccc;">
+      <h3 style="color: #8a2be2; margin-bottom: 10px; text-shadow: 0 0 8px #8a2be2;">Follow Us</h3>
+      <p>Instagram: <a href="#" style="color: #00ffff; text-decoration: none;">@hololux</a></p>
+      <p>Twitter: <a href="#" style="color: #00ffff; text-decoration: none;">@hololuxHQ</a></p>
+      <p>LinkedIn: <a href="#" style="color: #00ffff; text-decoration: none;">HoloLux Corporation</a></p>
+    </div>
+  </div>
+
+</section>
+
+<style>
+.contact-section {
+  background: linear-gradient(145deg, #0e0e14, #1a1a2f);
+  padding: 80px 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.8rem;
+  color: #00ffff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: left;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 20px;
+  background-color: #12121c;
+  border: 1px solid #00ffff33;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 1px solid #00ffff;
+}
+
+.contact-form button {
+  padding: 12px;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: transform 0.3s;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</section>
+
+  <!-- PREORDER SECTION -->
+  <section class="preorder-section" id="preorder">
+    <h2>Pre-Order HoloLux</h2>
+    <p>Reserve your HoloLux now and be among the first to own the future of time. Shipping begins soon.</p>
+    
+    <form action="#" method="POST" style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+  <input type="text" name="name" placeholder="Your Name" required style="padding: 10px 20px; width: 300px; border-radius: 8px; border: none; outline: none; font-family: 'Orbitron', sans-serif;">
+  <input type="email" name="email" placeholder="Your Email" required style="padding: 10px 20px; width: 300px; border-radius: 8px; border: none; outline: none; font-family: 'Orbitron', sans-serif;">
+  <textarea name="address" placeholder="Your Address" required style="padding: 10px 20px; width: 300px; height: 100px; border-radius: 8px; border: none; outline: none; font-family: 'Orbitron', sans-serif;"></textarea>
+  <button type="submit" style="padding: 12px 30px; background: linear-gradient(90deg, #00ffff, #8a2be2); color: white; border: none; border-radius: 30px; font-weight: bold; font-family: 'Orbitron', sans-serif; cursor: pointer;">Submit Pre-Order</button>
+</form>
+
+  <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; text-align: left;">
+    <div>
+      <h3 style="color: #8a2be2; margin-bottom: 15px;">Support & Policies</h3>
+      <ul style="list-style: none; padding: 0; color: #ccc; line-height: 1.8;">
+        <li><a href="#terms" style="color: #00ffff; text-decoration: none;">Terms & Conditions</a></li>
+        <li><a href="#privacy" style="color: #00ffff; text-decoration: none;">Privacy Policy</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Cookies Settings</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Terms of Use</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Human Rights Policy</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Supply Chain Policies</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Legal Notice</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Accessibility Statement</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Do Not Sell My Data Policy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 style="color: #8a2be2; margin-bottom: 15px;">Customer Support</h3>
+      <ul style="list-style: none; padding: 0; color: #ccc; line-height: 1.8;">
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Support</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Contact Us</a></li>
+        <li><a href="#faq" style="color: #00ffff; text-decoration: none;">FAQ</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Online Services</a></li>
+        <li><a href="#warranty" style="color: #00ffff; text-decoration: none;">Warranty</a></li>
+        <li><a href="#shipping" style="color: #00ffff; text-decoration: none;">Shipping</a></li>
+        <li><a href="#returns" style="color: #00ffff; text-decoration: none;">Returns</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Buying on HoloLux.com</a></li>
+        <li><a href="#" style="color: #00ffff; text-decoration: none;">Size Guide</a></li>
+        <li><a href="#track" style="color: #00ffff; text-decoration: none;">Track Your Order</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+     , 5000);
+  </script>
+
+</style>
+
+</body>
+</html>
